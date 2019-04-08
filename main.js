@@ -1,25 +1,31 @@
-// Defining text characters for the empty and full hearts for you to use later.
-const EMPTY_HEART = '♡'
-const FULL_HEART = '♥'
-
-// Your JavaScript code goes here!
+const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
+const dogImgEl = document.querySelector(".pic-div");
+const img = document.querySelector(".puppy-pic")
 
 
 
-
-//------------------------------------------------------------------------------
-// Ignore after this point. Used only for demo purposes
-//------------------------------------------------------------------------------
-
-function mimicServerCall(url="http://mimicServer.example.com", config={}) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
-      let isRandomFailure = Math.random() < .2
-      if (isRandomFailure) {
-        reject("Random server error. Try again.");
-      } else {
-        resolve("Pretend remote server notified of action!");
-      }
-    }, 300);
-  });
+function swapPic(json){
+  const imgSrc = document.querySelector(".puppy-pic")
+  imgSrc.src = json.message[0]
 }
+
+function fetchPic() {
+  fetch(imgUrl)
+    .then(resp => resp.json())
+    .then(json => swapPic(json));
+    document.querySelector(".instruction").innerHTML = "Boop the puppy on the nose";
+}
+
+
+
+
+document.querySelector(".puppy-pic").addEventListener("mousedown", function() {
+  document.querySelector(".instruction").innerHTML = "BOOP";
+});
+
+
+
+  document.querySelector(".next-button").addEventListener("click", fetchPic);
+
+
+

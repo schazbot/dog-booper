@@ -1,6 +1,7 @@
 body {
   margin: 5% 10%;
   background-color: rgb(29,161,242);
+  text-align: center;
 }
 
 .like {
@@ -9,6 +10,10 @@ body {
 
 body h1 {
   color: #FFF;
+}
+
+body p {
+  color: black
 }
 
 body > header {
